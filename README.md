@@ -37,6 +37,8 @@ Copy and Initialization.* MICRO
 [\[6\] Chang et al. *Improving DRAM Performance by Parallelizing Refreshes with
 Accesses.* HPCA 2014.](https://users.ece.cmu.edu/~omutlu/pub/dram-access-refresh-parallelization_hpca14.pdf)
 
+## Hybrid Memory Systems
+This branch is based on the master branch of Ramulator and is modified to simulate hybrid memory systems. To enable this functionality, set the preprocessor `MEMORY_USE_HYBRID` to `ENABLE` in the `ProjectConfiguration.h` file.
 
 ## Usage
 
@@ -83,20 +85,51 @@ Estimation Tool.* IEEE CAL 2015.](http://www.drampower.info)
 
 ## Getting Started
 
-Ramulator requires a C++11 compiler (e.g., `clang++`, `g++-5`).
+Ramulator requires a C++11 compiler (e.g., `clang++`, `g++-5`). Before starting to build or debug this project, you might need to be familiar with [the visual studio code tutorial](https://code.visualstudio.com/docs/cpp/config-linux).
+
+### Build
+Build methods are explained below.
+
+1. **Visual Studio Code-based method**
+- You may need to modify the compiler's path in the `tasks.json` file in the `.vscode` directory.
+- Click `Run Build Task` in the `Terminal` tab.
+
+2. **Command line-based method**
+
+        By referring the contents of `tasks.json` file, input the below command,
+        $ g++ -fdiagnostics-color=always -g -fopenmp -Wall -I ramulator_directory/inc/ ramulator_directory/src/*.cpp -o ramulator_directory/bin/ramulator
+
+3. **Make-based method**
+
+        $ cd ramulator
+        $ make -j
+        
+### Debug
+Debug methods are explained below.
+
+1. **Visual Studio Code-based method**
+- You may need to modify the debugger's path in the `launch.json` file in the `.vscode` directory.
+- Click `Start Debugging` in the `Run` tab.
+
+2. **Command line-based method**
+
+        By referring the contents of `launch.json` file in the `vscode` directory, input the below command,
+        $ (waiting for updating)
+
+### Examples
 
 1. **Memory Trace Driven**
 
         $ cd ramulator
         $ make -j
-        $ ./ramulator configs/DDR3-config.cfg --mode=dram dram.trace
-        Simulation done. Statistics written to DDR3.stats
+        $ ./ramulator configs/HBM-config.cfg configs/DDR4-config.cfg --mode=dram dram.trace
+        Simulation done. Statistics written to HBM_DDR4.stats
         # NOTE: dram.trace is a very short trace file provided only as an example.
-        $ ./ramulator configs/DDR3-config.cfg --mode=dram --stats my_output.txt dram.trace
+        $ ./ramulator configs/HBM-config.cfg configs/DDR4-config.cfg --mode=dram --stats my_output.txt dram.trace
         Simulation done. Statistics written to my_output.txt
         # NOTE: optional --stats flag changes the statistics output filename
 
-2. **CPU Trace Driven**
+2. **CPU Trace Driven (waiting for updating)**
 
         $ cd ramulator
         $ make -j
@@ -107,7 +140,7 @@ Ramulator requires a C++11 compiler (e.g., `clang++`, `g++-5`).
         Simulation done. Statistics written to my_output.txt
         # NOTE: optional --stats flag changes the statistics output filename
 
-3. **gem5 Driven**
+3. **gem5 Driven (waiting for updating)**
 
    *Requires SWIG 2.0.12+, gperftools (`libgoogle-perftools-dev` package on Ubuntu)*
 
