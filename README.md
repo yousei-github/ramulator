@@ -99,7 +99,7 @@ Build methods are explained below.
         By referring the contents of `tasks.json` file, input the below command,
         $ g++ -fdiagnostics-color=always -g -fopenmp -Wall -I ramulator_directory/inc/ ramulator_directory/src/*.cpp -o ramulator_directory/bin/ramulator
 
-3. **Make-based method**
+3. **Make-based method (currently doesn't work)**
 
         $ cd ramulator
         $ make -j
@@ -117,6 +117,7 @@ Debug methods are explained below.
         $ (waiting for updating)
 
 ### Examples
+Note currently the make-based build method doesn't work. Please use other methods to build this project.
 
 1. **Memory Trace Driven**
 
